@@ -4,11 +4,16 @@ import views from 'koa-views';
 
 const app = new Koa();
 const router = new Router();
+// app.use(
+// 	views('./views', {
+// 		map: {
+// 			ejs: 'ejs'
+// 		}
+// 	})
+// );
 app.use(
 	views('./views', {
-		map: {
-			ejs: 'ejs'
-		}
+		extension: 'ejs'
 	})
 );
 
