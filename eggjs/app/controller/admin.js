@@ -8,10 +8,15 @@ class AdminController extends Controller {
 	}
 
 	async news() {
-		console.log(this);
-		// this.service.NewsService.getNewsList();
+		// console.log(this);
+		// 调用服务里的方法，注意异步问题
+		const list = await this.service.news.getNewsList();
 
-		this.ctx.body = 'hello news';
+		await this.ctx.render('./news.html', {
+			list
+		});
+
+		// this.ctx.body = 'hello news';
 	}
 }
 

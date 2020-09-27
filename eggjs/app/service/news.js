@@ -12,6 +12,23 @@ class NewsService extends Service {
 		// 返回
 		return newsList;
 	}
+
+	async getApiNewsList() {
+		// 获取远程接口数据 curl
+		const url = `${this.config.api}appapi.php?a=getPortalList&catid=20&page=1`;
+		const response = await this.ctx.curl(url);
+
+		// 返回
+		return JSON.parse(response.data);
+	}
+
+	async getNewsContent(aid) {
+		// 获取远程接口数据 curl
+		const url = `${this.config.api}appapi.php?a=getPortalArticle&aid=${aid}`;
+		const response = await this.ctx.curl(url);
+		// 返回
+		return JSON.parse(response.data);
+	}
 }
 
 module.exports = NewsService;

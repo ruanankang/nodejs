@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>APIlist</h1>
+		<ul>
+			<% list.map(item => {%>
+			<li>
+				<a href="/newscontent?aid=<%=item.aid %>"><%=item.title%></a>
+				<span>---<%=helper.formatTime(item.dateline) %></span>
+			</li>
+			<% }) %>
+		</ul>
+	</body>
+</html>
