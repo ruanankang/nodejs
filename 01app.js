@@ -1,10 +1,10 @@
 /*
  * @Descripttion: node全局变量  console  __dirname  __filename 定时器等等
- * @version: 
+ * @version:
  * @Author: Ankong
  * @Date: 2019-09-14 15:24:40
- * @LastEditors: Ankong
- * @LastEditTime: 2019-09-15 16:59:57
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-09-27 10:00:32
  */
 
 // 引入并声明
@@ -19,7 +19,7 @@ console.log(stuff.foo(['Herrt', 'Bob', 'Alice']));
 // console.log(__filename); //文件完整名称
 // console.log(global); //全局变量
 
-// let time = 0; 
+// let time = 0;
 // let timer = setInterval(() => {
 //     time += 2;
 //     console.log(time + ' seconds have passed');
