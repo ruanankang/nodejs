@@ -13,4 +13,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 node_modules
-/zhihu-api/app/config.js
+config.js
