@@ -1,3 +1,4 @@
+const path = require('path');
 const { v1: uuidv1 } = require('uuid');
 
 class HomeController {
@@ -12,15 +13,17 @@ class HomeController {
 		if (!filesNameList.length) {
 			ctx.throw(400, '上传文件类型有误');
 		} else if (filesNameList.length === 1) {
-			const { path = `image_${uuidv1()}` } = files[filesNameList[0]];
 			// 上传一个文件
-			ctx.body = { path };
+			const { path: filePath = `image_${uuidv1()}` } = files[filesNameList[0]];
+			const basename = path.basename(filePath);
+			ctx.body = { filePath, url: `${ctx.origin}/uploads/${basename}` };
 		} else {
 			// 上传多个文件
 			const pathsArr = [];
 			filesNameList.map((fileName) => {
-				const { path = `image_${uuidv1()}` } = filesNameList[fileName];
-				pathsArr.push({ path });
+				const { path: filePath = `image_${uuidv1()}` } = files[fileName];
+				const basename = path.basename(filePath);
+				pathsArr.push({ filePath, url: `${ctx.origin}/uploads/${basename}` });
 			});
 			ctx.body = [...pathsArr];
 		}
