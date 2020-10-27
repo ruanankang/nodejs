@@ -7,7 +7,12 @@ const {
 	delete: del,
 	login,
 	auth,
-	checkOwner
+	checkOwner,
+	getFollowingList,
+	follow,
+	unfollow,
+	getFollowerList,
+	checkUserExist
 } = require('../controllers/users');
 
 const router = new Router({ prefix: '/users' });
@@ -29,5 +34,17 @@ router.delete('/:id', auth, checkOwner, del);
 
 // 用户登陆
 router.post('/login', login);
+
+// 获取用户关注者
+router.get('/:id/following', getFollowingList);
+
+// 关注某人
+router.put('/follow/:id', auth, checkUserExist, follow);
+
+// 取消关注某人
+router.delete('/unfollow/:id', auth, checkUserExist, unfollow);
+
+// 获取用户粉丝列表
+router.get('/:id/follower', getFollowerList);
 
 module.exports = router;
